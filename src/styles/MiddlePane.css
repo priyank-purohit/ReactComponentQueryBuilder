@@ -1,0 +1,23 @@
+.MiddlePane {
+	text-align: left;
+	float: left;
+	width: 75%;
+	height: 100vh;
+	background: #D3D3D3;
+}
+
+.MiddlePaneInner {
+	margin: 10px;
+}
+
+.MiddlePane-intro {
+	font-size: large;
+}
+
+.leDivs {
+}
+
+.queryBuilder {
+	width: 80%;
+	background: #D3D3D3;
+}
