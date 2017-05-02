@@ -1,6 +1,6 @@
 import React from 'react';
-import $ from 'jquery';
-import QueryBuilder from '../utils/qb.js';
+// import $ from 'jquery';
+// import QueryBuilder from '../utils/qb.js';
 
 const defaultRules = {
     condition: 'AND',
@@ -70,7 +70,7 @@ function initializeQueryBuilder(element, newRules) {
         }
     }];
     const rules = newRules ? newRules : defaultRules;
-    $(element).queryBuilder({ filters, rules });
+    window.$(element).queryBuilder({ filters, rules });
 }
 
 export default class QueryBuilderWrapper extends React.Component {
@@ -84,15 +84,16 @@ export default class QueryBuilderWrapper extends React.Component {
         const element = this.refs.queryBuilder;
         initializeQueryBuilder(element);
     }
+
     componentWillUnmount() {
-        $(this.refs.queryBuilder).queryBuilder('destroy');
+        window.$(this.refs.queryBuilder).queryBuilder('destroy');
     }
     shouldComponentUpdate() {
             return false;
         }
         // get data from jQuery Query Builder and pass to the react component
     handleGetRulesClick() {
-            const rules = $(this.refs.queryBuilder).queryBuilder('getRules');
+            const rules = window.$(this.refs.queryBuilder).queryBuilder('getRules');
             this.setState({ rules: rules });
             this.forceUpdate();
         }
@@ -100,7 +101,7 @@ export default class QueryBuilderWrapper extends React.Component {
     handleSetRulesClick() {
         const newRules = {...defaultRules };
         newRules.rules[0].value = newRules.rules[0].value + 10;
-        $(this.refs.queryBuilder).queryBuilder('setRules', newRules);
+        window.$(this.refs.queryBuilder).queryBuilder('setRules', newRules);
         this.setState({ rules: newRules });
     }
 
